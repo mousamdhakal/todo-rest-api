@@ -1,12 +1,15 @@
 const { add, getAll, update, remove } = require('../services/todoServices');
 
+const { v4: uuidv4 } = require('uuid');
+
 let addTodo = (req, res, next) => {
+  req.body.id = uuidv4();
   add(req.body, (err, result) => {
     if (err) {
       return next(err);
     }
     return res.json({
-      msg: 'Todo added successfully',
+      message: 'Todo added successfully',
       data: req.body,
       status: 200,
     });
@@ -39,6 +42,7 @@ let updateTodo = (req, res, next) => {
     }
     return res.json({
       message: 'Updated successfully',
+      data: req.body,
       status: 200,
     });
   });

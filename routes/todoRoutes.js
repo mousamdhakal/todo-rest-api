@@ -1,14 +1,18 @@
+const router = require('express').Router();
+
 const {
   addTodo,
   getAllTodos,
   updateTodo,
   deleteTodo,
 } = require('../controllers/todoController');
-const router = require('express').Router();
+const {
+  validateTodoInput,
+} = require('../middlewares/validations/todo/todo.validation');
 
-router.post('/', addTodo);
+router.post('/', validateTodoInput, addTodo);
 router.get('/', getAllTodos);
-router.put('/', updateTodo);
+router.put('/', validateTodoInput, updateTodo);
 router.delete('/', deleteTodo);
 
 module.exports = router;

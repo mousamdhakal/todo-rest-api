@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { getUserByEmail } = require('../services/authServices');
 
 let authenticateToken = function (req, res, next) {
   let token;
@@ -8,7 +9,7 @@ let authenticateToken = function (req, res, next) {
 
   if (!token) {
     return next({
-      msg: 'Token Not Provided',
+      message: 'Token Not Provided',
       status: 400,
     });
   }
@@ -17,16 +18,13 @@ let authenticateToken = function (req, res, next) {
     if (err) {
       return next(err);
     }
-    // req.user = decoded;
-    // additional work
-    // decoded uniquely identify hune key
-    // db_query()
-    // result
-    // if (!result) {
-    //     return next({
-    //         msg: 'user removed from system'
-    //     })
-    // }
+
+    getUserByEmail(decoded.result.email, (err, result) => {
+      if (result === undefined) {
+        next('User removed from system try logging in again');
+      }
+    });
+
     req.body.user = decoded.result;
     next();
   });

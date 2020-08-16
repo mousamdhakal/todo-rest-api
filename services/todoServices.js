@@ -2,7 +2,7 @@ const { pool } = require('../config/database');
 
 let add = (data, callBack) => {
   pool.query(
-    `INSERT INTO todos(id,todos,completed,user_id) values(?,?,?,?)`,
+    `INSERT INTO todo(id,todos,completed,user_id) values(?,?,?,?)`,
     [data.id, data.todo, data.completed, data.user.id],
     (error, results, fields) => {
       if (error) {
@@ -15,7 +15,7 @@ let add = (data, callBack) => {
 
 let getAll = (data, callBack) => {
   pool.query(
-    `SELECT id,todos,completed FROM todos WHERE user_id=?`,
+    `SELECT id,todos,completed FROM todo WHERE user_id=?`,
     [data.user.id],
     (error, results, fields) => {
       if (error) {
@@ -28,7 +28,7 @@ let getAll = (data, callBack) => {
 
 let update = (data, callBack) => {
   pool.query(
-    `UPDATE todos SET todos=?, completed=? WHERE id=? AND user_id= ?`,
+    `UPDATE todo SET todos=?, completed=? WHERE id=? AND user_id= ?`,
     [data.todo, data.completed, data.id, data.user.id],
     (error, results, fields) => {
       if (error) {
@@ -41,7 +41,7 @@ let update = (data, callBack) => {
 
 let remove = (data, callBack) => {
   pool.query(
-    `DELETE from todos WHERE id=? AND user_id= ?`,
+    `DELETE from todo WHERE id=? AND user_id= ?`,
     [data.id, data.user.id],
     (error, results, fields) => {
       if (error) {
