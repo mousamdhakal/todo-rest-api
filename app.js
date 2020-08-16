@@ -8,6 +8,16 @@ const cors = require('cors');
 // Start the express application
 const app = express();
 
+const corsOpts = {
+  origin: '*',
+
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOpts));
+
 // Parse incoming data
 app.use(
   express.urlencoded({
@@ -18,15 +28,6 @@ app.use(
 // Parse json data
 app.use(express.json());
 
-const corsOpts = {
-  origin: '*',
-
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-app.use(cors(corsOpts));
 // Handle cors error
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -37,7 +38,6 @@ app.use(cors(corsOpts));
 //   }
 //   next();
 // });
-app.use(cors(corsOpts));
 
 // Set up api for use
 app.use('/api', apiRoute);
