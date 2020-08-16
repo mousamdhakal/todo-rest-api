@@ -18,17 +18,26 @@ app.use(
 // Parse json data
 app.use(express.json());
 
+const corsOpts = {
+  origin: '*',
+
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOpts));
 // Handle cors error
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
-    return res.status(200).json({});
-  }
-  next();
-});
-app.use(cors());
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', '*');
+//   if (req.method === 'OPTIONS') {
+//     res.header('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
+//     return res.status(200).json({});
+//   }
+//   next();
+// });
+app.use(cors(corsOpts));
 
 // Set up api for use
 app.use('/api', apiRoute);
