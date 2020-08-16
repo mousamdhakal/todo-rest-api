@@ -10,6 +10,7 @@ const { v4: uuidv4 } = require('uuid');
 
 let createUser = (req, res, next) => {
   // Check if user exists already and send response here
+  console.log(req.body);
   const body = req.body;
   const salt = genSaltSync(10);
   body.password = hashSync(body.password, salt);
@@ -23,7 +24,7 @@ let createUser = (req, res, next) => {
 
   register(body, (err, result) => {
     if (err) {
-      return next(req.body);
+      return next(err);
     }
     return res.status(200).json({
       message: 'User created successfully, login to get access',
