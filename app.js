@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const apiRoute = require('./routes');
@@ -6,16 +8,6 @@ const cors = require('cors');
 
 // Start the express application
 const app = express();
-
-const corsOpts = {
-  origin: '*',
-
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-app.use(cors(corsOpts));
 
 // Parse incoming data
 app.use(
@@ -28,15 +20,7 @@ app.use(
 app.use(express.json());
 
 // Handle cors error
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', '*');
-//   if (req.method === 'OPTIONS') {
-//     res.header('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
-//     return res.status(200).json({});
-//   }
-//   next();
-// });
+app.use(cors());
 
 // Set up api for use
 app.use('/api', apiRoute);

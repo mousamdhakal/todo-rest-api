@@ -9,7 +9,6 @@ const { sign } = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
 let createUser = (req, res, next) => {
-  console.log(req.body);
   const body = req.body;
   const salt = genSaltSync(10);
   body.password = hashSync(body.password, salt);
