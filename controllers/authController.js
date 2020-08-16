@@ -9,7 +9,6 @@ const { sign } = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
 let createUser = (req, res, next) => {
-  // Check if user exists already and send response here
   console.log(req.body);
   const body = req.body;
   const salt = genSaltSync(10);
