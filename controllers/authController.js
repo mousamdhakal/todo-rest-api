@@ -10,7 +10,7 @@ const { v4: uuidv4 } = require('uuid');
 
 let createUser = (req, res, next) => {
   // Check if user exists already and send response here
-  console.log(req.body);
+  console.log(req);
   const body = req.body;
   const salt = genSaltSync(10);
   body.password = hashSync(body.password, salt);
