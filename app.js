@@ -8,9 +8,6 @@ const cors = require('cors');
 // Start the express application
 const app = express();
 
-// Handle cors error
-app.use(cors());
-
 // Parse incoming data
 app.use(
   express.urlencoded({
@@ -20,6 +17,9 @@ app.use(
 
 // Parse json data
 app.use(express.json());
+
+// Handle cors error
+app.use(cors());
 
 // Set up api for use
 app.use('/api', apiRoute);
