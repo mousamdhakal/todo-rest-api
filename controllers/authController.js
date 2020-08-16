@@ -49,6 +49,7 @@ let login = (req, res, next) => {
       return res.json({
         message: 'login successfully',
         token: jsonwebtoken,
+        data: results,
         status: 200,
       });
     } else {
