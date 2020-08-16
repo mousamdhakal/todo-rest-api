@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Rest API for todo application",
   "main": "app.js",
+  "engines": {
+    "node": "14.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Mousam Dhakal",
   "license": "ISC",
