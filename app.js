@@ -10,6 +10,13 @@ const app = express();
 // Handle cors error
 app.use(cors());
 
+// Parse incoming data
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
 // Parse json data
 app.use(express.json());
 
