@@ -1,7 +1,8 @@
 # ToDO REST API
 
 This API facilitates working with a complete todo App.
-You can see an example of live working site connected to the API [Here](https://todo-api-connected.netlify.app) 
+You can see an example of live working site connected to the API [here](https://todo-api-connected.netlify.app).
+
 All the Responses are sent as JSON data.
 
 The api is running live on  `https://rest-api-todo-login.herokuapp.com/api`
