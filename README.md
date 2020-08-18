@@ -46,6 +46,7 @@ These enpoints require token of authenticated user to be sent in Header in eithe
 Endpoint to delete current user and it's todos:
 
 * Delete user : `DELETE /auth`
+
 **Data example** No data needs to be sent, User will be identified from authentication token and deleted accordingly.
 
 
@@ -55,6 +56,7 @@ Endpoints for performing CRUD operations on todo.
 
 * Get all todos : `GET /todo`
 * Add a todo : `POST /todo`
+
 **Data example** 'todo' is sent as `String` and 'completed' as `Boolean`.
 
 ```json
@@ -64,6 +66,7 @@ Endpoints for performing CRUD operations on todo.
 }
 ```
 * Update a todo : `PUT /todo`
+
 **Data example** 'todo' and 'id' are sent as `String` and 'completed' as `Boolean`.
 
 ```json
