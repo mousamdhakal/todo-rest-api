@@ -11,6 +11,7 @@ The api is running live on  `https://rest-api-todo-login.herokuapp.com/api`
 These endpoints do not need Authorization.
 
 * Register : `POST /auth`
+
 **Data example** All fields must be sent as `String`.
   Password needs to be at least 8 character including one letter and one number 
 

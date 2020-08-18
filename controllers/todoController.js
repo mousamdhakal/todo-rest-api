@@ -1,6 +1,6 @@
-const { add, getAll, update, remove } = require('../services/todoServices');
-
 const { v4: uuidv4 } = require('uuid');
+
+const { add, getAll, update, remove } = require('../services/todoServices');
 
 /**
  * Add new todo
