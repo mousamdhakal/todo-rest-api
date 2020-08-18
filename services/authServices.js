@@ -1,5 +1,10 @@
 const { pool } = require('../config/database');
 
+/**
+ * Insert new user into the database
+ * @param {Object} data Data to insert in database
+ * @param {Function} callBack Function to be invoked on completion of database query
+ */
 let register = (data, callBack) => {
   pool.query(
     `INSERT INTO user (id,first_name,last_name,email,password) values(?,?,?,?,?)`,
@@ -13,6 +18,11 @@ let register = (data, callBack) => {
   );
 };
 
+/**
+ * Get the user from the database with email provided
+ * @param {String} data Data to insert in database
+ * @param {Function} callBack Function to be invoked on completion of database query
+ */
 let getUserByEmail = (email, callBack) => {
   pool.query(
     `SELECT * FROM user WHERE email = ?`,
@@ -26,6 +36,11 @@ let getUserByEmail = (email, callBack) => {
   );
 };
 
+/**
+ * Delete user from the database
+ * @param {Object} data Data containing user to delete
+ * @param {Function} callBack Function to be invoked on completion of database query
+ */
 let remove = (data, callBack) => {
   pool.query(
     `DELETE from user WHERE id=?`,

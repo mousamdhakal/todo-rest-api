@@ -1,5 +1,6 @@
 const joi = require('@hapi/joi');
 
+// Rules for validating input for creating new user
 const schema = {
   user: joi.object({
     first_name: joi.string().max(255).required(),

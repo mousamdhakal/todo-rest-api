@@ -1,5 +1,6 @@
 const { createPool } = require('mysql');
 
+// Create database pool
 const pool = createPool({
   port: process.env.DB_PORT,
   host: process.env.DB_HOST,

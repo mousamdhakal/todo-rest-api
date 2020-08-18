@@ -1,5 +1,6 @@
 const joi = require('@hapi/joi');
 
+// Validation rules for todo input
 const schema = {
   todo: joi.object({
     id: joi.string().max(255),

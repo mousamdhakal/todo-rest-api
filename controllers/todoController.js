@@ -2,8 +2,16 @@ const { add, getAll, update, remove } = require('../services/todoServices');
 
 const { v4: uuidv4 } = require('uuid');
 
+/**
+ * Add new todo
+ * @param {Object} req Request object
+ * @param {Object} res Response object
+ * @param {Function} next Function as a reference to call next middleware
+ */
 let addTodo = (req, res, next) => {
+  // Generate new unique id for the todo
   req.body.id = uuidv4();
+  // Add the todo in the database
   add(req.body, (err, result) => {
     if (err) {
       return next(err);
@@ -16,15 +24,24 @@ let addTodo = (req, res, next) => {
   });
 };
 
+/**
+ * Get all todos in database for the user with provided token
+ * @param {Object} req Request object
+ * @param {Object} res Response object
+ * @param {Function} next Function as a reference to call next middleware
+ */
 let getAllTodos = (req, res, next) => {
   getAll(req.body, (err, results) => {
     if (err) {
       return next(err);
     }
+    // If there are no todos in database for the user,
     if (!results) {
-      return next('Records not found for the user');
+      return res.json({
+        message: 'No todos in the Database for the user',
+        status: 200,
+      });
     }
-
     return res.json({
       data: results,
       status: 200,
@@ -32,6 +49,12 @@ let getAllTodos = (req, res, next) => {
   });
 };
 
+/**
+ * Update the todo provided
+ * @param {Object} req Request object
+ * @param {Object} res Response object
+ * @param {Function} next Function as a reference to call next middleware
+ */
 let updateTodo = (req, res, next) => {
   update(req.body, (err, result) => {
     if (err) {
@@ -48,6 +71,12 @@ let updateTodo = (req, res, next) => {
   });
 };
 
+/**
+ * Delete the todo provided
+ * @param {Object} req Request object
+ * @param {Object} res Response object
+ * @param {Function} next Function as a reference to call next middleware
+ */
 let deleteTodo = (req, res, next) => {
   remove(req.body, (err, result) => {
     if (err) {

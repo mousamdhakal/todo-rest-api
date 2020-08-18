@@ -1,10 +1,8 @@
 require('dotenv').config();
-
 const express = require('express');
+const cors = require('cors');
 
 const apiRoute = require('./routes');
-
-const cors = require('cors');
 
 // Start the express application
 const app = express();
@@ -42,6 +40,7 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Start listening on the port specified int eh environment
 app.listen(process.env.PORT, () => {
   console.log('app running on port ', process.env.PORT);
 });
